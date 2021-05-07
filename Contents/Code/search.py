@@ -1,18 +1,14 @@
 import vgmdb
 
 def search_albums(results, media, lang):
-    query = media.comment
 
-    if query is None:
-        query = media.album
-    
-    if "http" in query :
-        query = media.album
+    query = media.album
     
     if query is None:
         query = media.name
 
-
+    if "-" in query :
+        query = query.replace("- ","-").replace("-","- ")
 
     result = vgmdb.search_albums(query)
 
