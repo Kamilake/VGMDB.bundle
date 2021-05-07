@@ -5,6 +5,7 @@ def search_albums(query):
     try:
         request.load()
         result = JSON.ObjectFromString(request.content)
+        Log.Error('kamikami ' + query)
         return result['results']['albums']
     except:
         Log.Error('Error searching VGMDB - Album: ' + query)
