@@ -2,8 +2,11 @@ import vgmdb
 
 def search_albums(results, media, lang):
 
-    query = media.album
+    query = media.albumartist
     
+    if query is None:
+        query = media.album
+
     if query is None:
         query = media.name
 
