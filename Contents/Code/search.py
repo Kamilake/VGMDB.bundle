@@ -2,13 +2,14 @@ import vgmdb
 
 def search_albums(results, media, lang):
 
-    query = media.albumartist
-    
-    if query is None:
-        query = media.album
+    query = media.album
 
     if query is None:
         query = media.name
+
+    if media.filename is not None:
+        if media.filename.find("&&&&") != -1:
+            query = media.filename[(media.filename.find("&&&&"))+4:(media.filename.find("$$$$"))]
 
     if "-" in query :
         query = query.replace("- ","-").replace("-","- ")
